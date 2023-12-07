@@ -66,8 +66,55 @@ var varVrb;
 
 // 3. EVENT LOOP: call stack
 
-// Это бесконечный цикл, в котором есть различные обработчики событий.
+// Event Loop является стеком, где хранятся все задачи, которые не вошли в синхронный поток выполнения. После завершения синхронного потока - задачи начинают выполняться из Event Loop'а. Однако у Event Loop'а тоже есть свои правила. Он делит все задачи на подтипы: микрозадачи, макрозадачи, задачи отрисовки
 
 // 4. NULL vs UNDEFINED
 
 // null обычно задаётся переменной явно и означает, что она ничего не содержит. undefined показывает, что значение переменной «не определено». undefined обычно присваивается переменной, когда она была объявлена, но не было определено её начальное значение. Также, undefined может возвращаться и из функции — это происходит, если функции явно не возвращает ничего другого. null же обычно возвращают из функции явно, чтобы показать, что результат функции равен «ничему».
+
+// 5. Коллекция данных Map, Set and Object
+
+// Map – это коллекция ключ/значение, как и Object. Но основное отличие в том, что Map позволяет использовать ключи любого типа.
+
+let map = new Map();
+
+map.set("1", "str1"); // строка в качестве ключа
+map.set(1, "num1"); // цифра как ключ
+map.set(true, "bool1"); // булево значение как ключ
+console.log(map); // {"1" => "str1", 1 => "num1", true => "bool1"}
+
+// Set позволяет создать массив без дубликатов. Он убирает повторяющиеся элементы.
+
+const myArray = [1, 1, 2, 2, 3];
+const unique = new Set(myArray);
+console.log(unique); // [1, 2, 3]
+unique.add(4);
+console.log(unique); // [1, 2, 3, 4]
+
+// Object
+
+// Ways to create new Object
+
+const objectOne = new Object();
+objectOne.name = "George";
+
+function Person(fname, lname) {
+  this.firstName = fname; // this refers to an object
+  this.lastName = lname;
+}
+const personOne = new Person("testFirstNameOne", "testLastNameOne");
+const personTwo = new Person("testFirstNameTwo", "testLastNameTwo");
+console.log(personOne.firstName); // testFirstNameOne
+console.log(personTwo.firstName); // testFirstNameTwo
+
+const objectTwo = { fname: "George", lname: "Mars" };
+console.log(Object.keys(objectTwo)); // ["fname", "lname"]
+console.log(Object.values(objectTwo)); // ["George", "Mars"]
+console.log(Object.entries(objectTwo)); // [["fname", "George"], ["lname", "Mars"]]
+
+// 6. Array
+
+let text = "ABCDEFG";
+const myArr = Array.from(text);
+
+console.log(myArr); // [A, B, C, D, E, F, G]
