@@ -1,0 +1,31 @@
+/* 1. Использование атрибута data для вывода текста при наведении без javascript */
+
+.div-for-hover {
+  position: relative;
+  width: 100px;
+  aspect-ratio: 1/1;
+  background-color: brown;
+  cursor: pointer;
+}
+
+.div-for-hover:hover::after {
+  content: attr(data-description);
+  position: absolute;
+  left: 100%;
+  width: max-content;
+  background-color: lightgray;
+}
+
+/* 2. Изменение стиля input file */
+
+input {
+  display: none;
+}
+
+label {
+  display: block;
+  width: max-content;
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid black;
+}

@@ -1,3 +1,5 @@
+<!-- HTML (HyperText Markup Language) — «язык гипертекстовой разметки» -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,5 +12,25 @@
   <body>
     <h1>Hello World</h1>
     <div id="my-div"></div>
+
+    <!-- 1. Эти теги не требуют закрытия. Это так называемые одиночные теги -->
+    <img src="" alt="text" />
+    <hr />
+    <!-- горизонтальная линия -->
+    <br />
+    <input type="text" />
+    <!-- 2. Открыть ссылку в новом окне -->
+    <a href="" target="_blank">Click here</a>
+    <!-- 3. Ссылка на id -->
+    <a href="#1">Go to 'Hello'</a>
+    <p style="margin-top: 1000px" id="1">Hello</p>
+    <!-- 4. Атрибут data -->
+    <div
+      class="div-for-hover"
+      data-description="This is data attribute trick"
+    ></div>
+    <!-- 5. Изменение стиля input file -->
+    <input id="upload" type="file" />
+    <label for="upload">Upload file</label>
   </body>
 </html>
