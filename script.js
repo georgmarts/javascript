@@ -1,22 +1,4 @@
-// 1. Замыкание - Closure
-
-// Замыкание – это функция, которая запоминает свои внешние переменные и может получить к ним доступ.
-
-function createFn() {
-  let x = 0;
-  function closureFn() {
-    console.log(x++);
-  }
-  return closureFn;
-}
-
-const variable = createFn();
-
-variable(); // 0
-variable(); // 1
-variable(); // 2
-
-// 2. Отличие переменных var, let и const
+// 1. Отличие переменных var, let и const
 
 // Область видимости переменной var - функция (видна за пределами if/else), let и const - блок (внутри фигурных скобок)
 
@@ -47,7 +29,7 @@ console.log(num); // 1 2
 let z = 0;
 z = 1;
 
-//  const - неизменяемая, НО мы можем менять свойства объекта const.
+//  const - неизменяемая, НО мы можем менять свойства объекта в const.
 
 const y = 0;
 y = 1; // // TypeError: Assignment to constant variable.
@@ -59,6 +41,16 @@ const car = {
 car.name = 'nissan'
 console.log(car) //  {name: "nissan", color: "white"}
 
+// НО мы можем сделать объект в const неизменяемым.
+
+const car = {
+  name: 'tesla',
+  color: 'white'
+}
+Object.freeze(car)
+car.name = 'nissan'
+console.log(car) // {name: "tesla", color: "white"}
+
 // var – поддерживает hoisting. Объявление переменной поднимается вверх в пределах области видимости во время компиляции кода.
 
 varVrb = 3;
@@ -68,6 +60,24 @@ var varVrb;
 
 letVrb = 2; // ReferenceError: Cannot access 'letVrb' before initialization
 let letVrb;
+
+// 2. Замыкание - Closure
+
+// Замыкание – это функция, которая запоминает свои внешние переменные и может получить к ним доступ.
+
+function createFn() {
+  let x = 0;
+  function closureFn() {
+    console.log(x++);
+  }
+  return closureFn;
+}
+
+const variable = createFn();
+
+variable(); // 0
+variable(); // 1
+variable(); // 2
 
 // 3. EVENT LOOP: call stack
 
