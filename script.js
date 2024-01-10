@@ -18,51 +18,56 @@ variable(); // 2
 
 // 2. Отличие переменных var, let и const
 
-// В JS две области видимости - глобальная и локальная
+// Область видимости переменной var - функция (видна за пределами if/else), let и const - блок (внутри фигурных скобок)
 
-// Переменные, объявленные при помощи var, могут как объявляться заново, так и обновляться.
+function getNumber() {
+  var num = 1
+}
+console.log(num) // undefined
+
+var num = 2
+if (num > 0) {
+    var kg = `${num} kg`
+}
+console.log(kg) // '2 kg' - тут var доступна глобально, потому что это не функция, а блок
+
+// Переменная var может обновляться и объявляться заново
 
 var num = 1;
 num = 2;
 console.log(num); // 2
-var num = 3;
-console.log(num); // 3
 
-// var – игнорирует блочную область видимости. Переменные, объявленные таким способом будут видны за пределами блока.
+var num = 1;
+console.log(num)
+var num = 2;
+console.log(num); // 1 2 
 
-{
-  var varVrb = 2;
-}
-
-console.log(varVrb); // 2
-
-// let – значение может быть переопределено в будущем. Переменные const, нельзя обновить или объявить заново.
+// let – изменяемая переменная
 
 let z = 0;
 z = 1;
 
+//  const - неизменяемая, НО мы можем менять свойства объекта const.
+
 const y = 0;
 y = 1; // // TypeError: Assignment to constant variable.
 
-// const, let – соблюдают блочную область видимости. Любой код, окруженный фигурными скобками.
-
-{
-  const constVrb = 1;
-  let letVrb = 2;
+const car = {
+  name: 'tesla',
+  color: 'white'
 }
-
-console.log(constVrb); // ReferenceError: constVrb is not defined
-console.log(letVrb); // ReferenceError: letVrb is not defined
-
-// const, let – не поддерживают hoisting.
-
-letVrb = 2; // ReferenceError: Cannot access 'letVrb' before initialization
-let letVrb;
+car.name = 'nissan'
+console.log(car) //  {name: "nissan", color: "white"}
 
 // var – поддерживает hoisting. Объявление переменной поднимается вверх в пределах области видимости во время компиляции кода.
 
 varVrb = 3;
 var varVrb;
+
+// const, let – не поддерживают hoisting.
+
+letVrb = 2; // ReferenceError: Cannot access 'letVrb' before initialization
+let letVrb;
 
 // 3. EVENT LOOP: call stack
 
